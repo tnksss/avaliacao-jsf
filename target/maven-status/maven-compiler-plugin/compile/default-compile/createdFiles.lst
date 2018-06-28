@@ -1,0 +1,10 @@
+br/edu/utfpr/show/util/JPAUtil.class
+br/edu/utfpr/show/model/ShowDonation.class
+br/edu/utfpr/show/model/dao/AbstractDAO.class
+br/edu/utfpr/show/bean/TotalBean.class
+br/edu/utfpr/show/model/Extra.class
+br/edu/utfpr/show/model/dao/ShowDao.class
+br/edu/utfpr/show/model/Event.class
+br/edu/utfpr/show/model/service/ShowService.class
+br/edu/utfpr/show/bean/ShowBean.class
+br/edu/utfpr/show/model/service/AbstractService.class

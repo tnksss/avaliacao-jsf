@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Show Beneficente</title>
+    </h:head>
+    <h:body>
+        <div class="ui-g-2"></div>
+        <p:panel class="ui-g-8">
+            <h1>Venda de Ingressos</h1>
+
+
+
+            <p:dataTable var="showDonation" value="#{showBean.showDonations}">
+                <p:column headerText="Show">
+                    <h:outputText value="#{showDonation.evento}" />
+                </p:column>
+
+
+
+                <p:column headerText="Quantidade">
+                    <h:outputText value="#{showDonation.qtdIngressos}" />
+                </p:column>
+
+                Data:
+
+                <p:column headerText="Data">
+                    <h:outputText value="#{showDonation.data}" id="dataShow">
+                        <f:convertDateTime locale="pt-BR" dateStyle="long" pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+            </p:dataTable>
+            <br></br>
+            Total Vendido: <p:outputLabel value="#{showBean.totalIngressos()}"></p:outputLabel>
+            <br></br>
+            Total Arrecadado: <p:outputLabel value="#{showBean.totalRecebido()}"></p:outputLabel>
+
+
+            <div class="ui-g">
+
+                <p:button outcome="index" value="Nova Doação"></p:button>
+            </div>
+        </p:panel>
+    </h:body>
+</html>
+

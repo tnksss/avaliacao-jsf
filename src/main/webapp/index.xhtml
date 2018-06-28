@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Show Beneficente</title>
+    </h:head>
+    <h:body>
+
+        <div class="ui-g">
+            <div class="ui-g-2"></div>
+            <div class="ui-g-8">
+                <p:panel id="show" header="Show Beneficente" style="margin-bottom:20px">
+                    <h:panelGrid columns="2" cellpadding="10">
+
+                        Local:
+                        <p:outputLabel value="#{showBean.event.local}"></p:outputLabel>
+                        Data:
+                        <h:panelGroup>
+                            <h:outputText value="#{showBean.event.dataInicio}" id="dataInicio">
+                                <f:convertDateTime locale="pt-BR" dateStyle="long" pattern="dd/MM/yyyy" />
+                            </h:outputText> - <h:outputText value="#{showBean.event.dataFim}" id="dataFim">
+                                <f:convertDateTime locale="pt-BR" dateStyle="long" pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </h:panelGroup>
+                        Cidade:
+                        <p:outputLabel value="#{showBean.event.cidade}"></p:outputLabel>
+
+
+                    </h:panelGrid>
+                    <p:separator></p:separator>
+                    <h:form>
+                        <p:messages></p:messages>
+                        <h:panelGrid columns="2" style="margin-bottom: 10px" cellpadding="5">
+                            <h:outputText value="Quantidade de Ingressos: " />
+                            <p:spinner id="minMax" value="#{showBean.showDonation.qtdIngressos}" min="1" max="10" style="align-content: center " />
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" style="margin-bottom: 10px" cellpadding="5">
+                            <h:outputText value="Valor para Doação: " />
+                            <p:spinner id="step" value="#{showBean.showDonation.valorDoacao}" min="0" stepFactor="0.25" />
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" style="margin-bottom: 10px" cellpadding="5">
+                            <h:outputText value="Evento: " />
+                            <p:selectOneMenu id="console" value="#{showBean.showDonation.evento}" style="width:200px">
+                                <f:selectItem itemLabel="Selecione uma Banda" itemValue="" />
+                                <f:selectItems value="#{totalBean.shows}" ></f:selectItems>
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" style="margin-bottom: 10px" cellpadding="5">
+                            <h:outputText value="Data: " />
+                            <p:calendar id="button" value="#{showBean.showDonation.data}" mindate="21/06/18" maxdate="28/06/18" showOn="button" />
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                            <h:outputText value="Atendimento Especial? " />
+                            <p:inputSwitch value="#{showBean.dadosExtras.necessidadeEspecial}" />
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                            <p:outputLabel for="phone" value="Telefone:" />
+                            <p:inputMask id="phone" value="#{showBean.dadosExtras.telefone}" mask="(999) 99999-9999"/>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="1" style="margin-bottom: 10px">
+                            <p:outputLabel value="Idade:" />
+
+                            <p:inputText id="txt1" value="#{showBean.dadosExtras.idade}" />
+                            <p:slider for="txt1" minValue="18" maxValue="130" />
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" style="margin-bottom: 10px">
+                            <p:outputLabel value="Avaliação:" />
+                            <p:rating value="#{showBean.dadosExtras.avaliação}" />
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="1" style="margin-bottom: 10px">
+                            <p:outputLabel value="Comentários: "/>
+                            <p:inputTextarea rows="5" cols="30" counter="display"
+                                             maxlength="140" counterTemplate="{0} Caracteres restantes."
+                                             autoResize="false"  value="#{showBean.dadosExtras.comentario}"/>
+                            <h:outputText id="display" />
+                        </h:panelGrid>
+
+                        <p:commandButton value="Enviar" action="#{showBean.clickHandler()}">
+
+                        </p:commandButton>
+                    </h:form>
+                </p:panel>
+
+                <br></br>
+
+            </div>
+        </div>
+
+    </h:body>
+</html>
+
